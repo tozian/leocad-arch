@@ -24,8 +24,8 @@ build() {
 cd "${srcdir}/${pkgname}"
  
 # install the binary to /usr/share
+qmake leocad.pro
 sed 's#$(DESTDIR)$(PREFIX)/bin#$(DESTDIR)$(PREFIX)/share/leocad/bin#g' -i Makefile
-make config
 make
 }
  
