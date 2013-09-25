@@ -25,14 +25,14 @@ cd "${srcdir}/${pkgname}"
  
 # install the binary to /usr/share
 qmake leocad.pro
-sed 's#$(DESTDIR)$(PREFIX)/bin#$(DESTDIR)$(PREFIX)/share/leocad/bin#g' -i Makefile
+sed 's#$(INSTALL_ROOT)/usr/bin#$(INSTALL_ROOT)/usr/share/leocad/bin#g' -i Makefile
 make
 }
  
 package() {
 cd "${srcdir}/${pkgname}"
  
-make DESTDIR="${pkgdir}" PREFIX="/usr" install
+make INSTALL_ROOT="${pkgdir}" install
  
 install -dm755 "${pkgdir}/usr/share/leocad/pieces/"
 install -Dm644 "${srcdir}/library.bin" "${pkgdir}/usr/share/leocad/pieces/library.bin"
